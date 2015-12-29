@@ -349,7 +349,7 @@ describe('validations', function () {
 
   });
 
-  describe.only('uniqueness', function () {
+  describe('uniqueness', function () {
     it('should validate uniqueness', function (done) {
       User.validatesUniquenessOf('email');
       var u = new User({email: 'hey'});
