@@ -468,7 +468,7 @@ describe('validations', function() {
       });
     });
 
-    it('should validate uniqueness c-i', function (done) {
+    it('should validate uniqueness case insensitive', function (done) {
       User.validatesUniquenessOf('email', { caseInsensitive: true });
       var u = new User({email: 'hey'});
       Boolean(u.isValid(function (valid) {
@@ -483,9 +483,25 @@ describe('validations', function() {
       })).should.be.false;
     });
 
+
+    it('should validate uniqueness case insensitive with string that needs escaping', function (done) {
+      User.validatesUniquenessOf('email', { caseInsensitive: true });
+      var u = new User({email: 'hey+hey'});
+      Boolean(u.isValid(function (valid) {
+        valid.should.be.true;
+        u.save(function () {
+          var u2 = new User({email: 'HEY+HEY'});
+          u2.isValid(function (valid) {
+            valid.should.be.false;
+            done();
+          });
+        });
+      })).should.be.false;
+    });
+
   });
 
-  describe('format', function() {
+  describe('format', function () {
     it('should validate format');
     it('should overwrite default blank message with custom format message');
 
