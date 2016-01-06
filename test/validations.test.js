@@ -486,11 +486,11 @@ describe('validations', function() {
 
     it('should validate uniqueness and ignore case with string that needs escaping', function (done) {
       User.validatesUniquenessOf('email', { ignoreCase: true });
-      var u = new User({email: 'me@my.com'});
+      var u = new User({email: 'me+me@my.com'});
       Boolean(u.isValid(function (valid) {
         valid.should.be.true;
         u.save(function () {
-          var u2 = new User({email: 'ME@MY.COM'});
+          var u2 = new User({email: 'ME+ME@MY.COM'});
           u2.isValid(function (valid) {
             valid.should.be.false;
             done();
@@ -501,7 +501,7 @@ describe('validations', function() {
 
     it('should validate uniqueness and ignore case with partial string that needs escaping', function (done) {
       User.validatesUniquenessOf('email', { ignoreCase: true });
-      var u = new User({email: 'also.me@my.com'});
+      var u = new User({email: 'also+me@my.com'});
       Boolean(u.isValid(function (valid) {
         valid.should.be.true;
         u.save(function () {
