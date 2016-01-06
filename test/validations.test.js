@@ -464,7 +464,7 @@ describe('validations', function () {
     });
 
     it('should validate uniqueness case insensitive', function (done) {
-      User.validatesUniquenessOf('email', { caseInsensitive: true });
+      User.validatesUniquenessOf('email', { ignoreCase: true });
       var u = new User({email: 'hey'});
       Boolean(u.isValid(function (valid) {
         valid.should.be.true;
@@ -479,15 +479,30 @@ describe('validations', function () {
     });
 
 
-    it('should validate uniqueness case insensitive with string that needs escaping', function (done) {
-      User.validatesUniquenessOf('email', { caseInsensitive: true });
-      var u = new User({email: 'hey+hey'});
+    it('should validate uniqueness and ignore case with string that needs escaping', function (done) {
+      User.validatesUniquenessOf('email', { ignoreCase: true });
+      var u = new User({email: 'me@my.com'});
       Boolean(u.isValid(function (valid) {
         valid.should.be.true;
         u.save(function () {
-          var u2 = new User({email: 'HEY+HEY'});
+          var u2 = new User({email: 'ME@MY.COM'});
           u2.isValid(function (valid) {
             valid.should.be.false;
+            done();
+          });
+        });
+      })).should.be.false;
+    });
+
+    it('should validate uniqueness and ignore case with partial string that needs escaping', function (done) {
+      User.validatesUniquenessOf('email', { ignoreCase: true });
+      var u = new User({email: 'also.me@my.com'});
+      Boolean(u.isValid(function (valid) {
+        valid.should.be.true;
+        u.save(function () {
+          var u2 = new User({email: 'Me@My.com'});
+          u2.isValid(function (valid) {
+            valid.should.be.true;
             done();
           });
         });
