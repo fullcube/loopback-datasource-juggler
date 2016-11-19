@@ -1,3 +1,79 @@
+2016-10-13, Version 2.53.0
+==========================
+
+ * Fix bug when near filter is used (Amir Jafarian)
+
+
+2016-10-13, Version 2.52.0
+==========================
+
+ * Support {defaultFn: 'shortid'} (#1110) (Simon Ho)
+
+ * Add ilike and nilike operators (#1136) (Simon Ho)
+
+ * Fix JSdoc (Amir Jafarian)
+
+ * Update ja translation file (Candy)
+
+ * Update translation files - round#2 (Candy)
+
+ * Add 'isNewInstance' for updateAttributes (Amir Jafarian)
+
+ * Add globalization strings (Amir Jafarian)
+
+ * Add docs for KVAO (Simon Ho)
+
+ * Skip test temporarily (Loay)
+
+
+2016-09-12, Version 2.51.0
+==========================
+
+ * Add missing "done" arg in test/kvao/ttl.suite (Miroslav Bajtoš)
+
+ * Support nested queries for arrays (pponugo)
+
+ * Remove expired item before executing expire (Simon Ho)
+
+ * Fix failures for connectors (Amir Jafarian)
+
+ * upsertWithWhere feature support in juggler DAO (Sonali Samantaray)
+
+ * Remove ESLint from dependencies (Simon Ho)
+
+ * Refactor TTL test suite (Simon Ho)
+
+
+2016-08-26, Version 2.50.0
+==========================
+
+ * test/memory: remove dummy findOrCreate impl (Miroslav Bajtoš)
+
+ * Implement `notify` for find method (Amir Jafarian)
+
+ * kvao: implement key filter (Miroslav Bajtoš)
+
+ * kvao: add iterateKeys() and keys() (Miroslav Bajtoš)
+
+ * Globalize KeyValue Memory connector (Simon Ho)
+
+ * test: Rename KVAO get test suite (Simon Ho)
+
+
+2016-08-16, Version 2.49.0
+==========================
+
+ * Fix error message for missing global.Promise (Miroslav Bajtoš)
+
+ * Add TTL for KeyValue related features (Simon Ho)
+
+ * test/kvao: setup global.Promise on Node v0.10 (Miroslav Bajtoš)
+
+ * kv-memory: fix crash in regular cleanup (Miroslav Bajtoš)
+
+ * Backport globalization (Amir Jafarian)
+
+
 2016-08-09, Version 2.48.0
 ==========================
 
